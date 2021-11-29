@@ -11,6 +11,7 @@ if has("nvim")
   Plug 'hoob3rt/lualine.nvim'
   Plug 'kristijanhusak/defx-git'
   Plug 'kristijanhusak/defx-icons'
+  Plug 'akinsho/bufferline.nvim'
   Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'neovim/nvim-lspconfig'
   Plug 'tami5/lspsaga.nvim', { 'branch': 'nvim51' }
@@ -29,6 +30,7 @@ if has("nvim")
   Plug 'karb94/neoscroll.nvim'
   Plug 'sainnhe/everforest'
   Plug 'mhartington/oceanic-next'
+  Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
 endif
 
 Plug 'groenewege/vim-less', { 'for': 'less' }

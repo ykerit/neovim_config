@@ -48,7 +48,6 @@ set smarttab
 " indents
 filetype plugin indent on
 set shiftwidth=4
-set showtabline=4
 set tabstop=4
 set ai "Auto indent
 set si "Smart indent
@@ -131,7 +130,8 @@ if exists("&termguicolors") && exists("&winblend")
   set pumblend=5
   set background=dark
   " colorscheme everforest
-  colorscheme OceanicNext
+  " colorscheme OceanicNext
+  colorscheme embark
 endif
 
 " Extras 
