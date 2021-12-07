@@ -131,7 +131,8 @@ if exists("&termguicolors") && exists("&winblend")
   set background=dark
   " colorscheme everforest
   " colorscheme OceanicNext
-  colorscheme embark
+  " colorscheme embark
+  colorscheme codedark
 endif
 
 " Extras 

@@ -31,6 +31,7 @@ if has("nvim")
   Plug 'sainnhe/everforest'
   Plug 'mhartington/oceanic-next'
   Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
+  Plug 'tomasiser/vim-code-dark'
 endif
 
 Plug 'groenewege/vim-less', { 'for': 'less' }
