@@ -132,7 +132,9 @@ if exists("&termguicolors") && exists("&winblend")
   " colorscheme everforest
   " colorscheme OceanicNext
   " colorscheme embark
-  colorscheme codedark
+  " colorscheme codedark
+  " colorscheme abstract 
+  colorscheme space-vim-dark 
 endif
 
 " Extras 

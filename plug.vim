@@ -16,6 +16,7 @@ if has("nvim")
   Plug 'neovim/nvim-lspconfig'
   Plug 'tami5/lspsaga.nvim', { 'branch': 'nvim51' }
   Plug 'folke/lsp-colors.nvim'
+  Plug 'mhartington/formatter.nvim'
   Plug 'L3MON4D3/LuaSnip'
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/cmp-buffer'
@@ -28,10 +29,8 @@ if has("nvim")
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'windwp/nvim-autopairs'
   Plug 'karb94/neoscroll.nvim'
-  Plug 'sainnhe/everforest'
-  Plug 'mhartington/oceanic-next'
-  Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
-  Plug 'tomasiser/vim-code-dark'
+  Plug 'kyazdani42/nvim-tree.lua'
+  Plug 'liuchengxu/space-vim-dark'
 endif
 
 Plug 'groenewege/vim-less', { 'for': 'less' }

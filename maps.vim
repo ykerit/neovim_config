@@ -1,4 +1,5 @@
 " Description: Keymaps
+let mapleader=","
 
 nnoremap <S-C-p> "0p
 " Delete without yank
@@ -58,4 +59,9 @@ nmap <C-w><up> <C-w>+
 nmap <C-w><down> <C-w>-
 " Esc and save 
 inoremap jk <esc>:w<cr>
+
+" nvim tree
+nnoremap <C-n> :NvimTreeToggle<CR>
+nnoremap <leader>r :NvimTreeRefresh<CR>
+nnoremap <leader>n :NvimTreeFindFile<CR>
 
