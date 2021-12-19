@@ -26,7 +26,7 @@ if has("nvim")
   Plug 'onsails/lspkind-nvim'
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
-  Plug 'nvim-telescope/telescope.nvim'
+  Plug 'nvim-telescope/telescope.nvim', {'tag': '80cdb00b221f69348afc4fb4b701f51eb8dd3120'}
   Plug 'windwp/nvim-autopairs'
   Plug 'karb94/neoscroll.nvim'
   Plug 'kyazdani42/nvim-tree.lua'

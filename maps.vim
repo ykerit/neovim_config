@@ -35,6 +35,8 @@ vnoremap <silent> # :<C-U>
 nmap te :tabedit 
 nmap <S-Tab> :BufferLineCyclePrev<Return>
 nmap <Tab> :BufferLineCycleNext<Return>
+nmap cb :BufferLinePickClose<Return>
+
 
 "------------------------------
 " Windows
