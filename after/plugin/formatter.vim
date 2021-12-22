@@ -42,6 +42,16 @@ lua << EOF
                     }
                 end
             },
+            go = {
+                -- gofmt
+                function()
+                   return {
+                     exe = 'goimports',
+                     args = { "-w", vim.api.nvim_buf_get_name(0) },
+                     stdin = true,
+                   }
+                end,
+            },
         }
     })
 EOF
