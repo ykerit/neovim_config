@@ -182,4 +182,3 @@ end
 
 EOF
 autocmd BufWritePre *.go :silent! lua vim.lsp.buf.formatting()
-autocmd BufWritePre *.go lua goimports(1000)

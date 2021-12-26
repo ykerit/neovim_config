@@ -33,6 +33,7 @@ if has("nvim")
   Plug 'liuchengxu/space-vim-dark'
   Plug 'robertmeta/nofrils'
   Plug 'huyvohcmc/atlas.vim'
+  Plug 'bluz71/vim-moonfly-colors'
 endif
 
 Plug 'groenewege/vim-less', { 'for': 'less' }

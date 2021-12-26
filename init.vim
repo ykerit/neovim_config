@@ -136,7 +136,8 @@ if exists("&termguicolors") && exists("&winblend")
   " colorscheme abstract 
   " colorscheme space-vim-dark 
   " colorscheme minedefault
-  colorscheme atlas
+  " colorscheme atlas
+  colorscheme moonfly
 endif
 
 " Extras 
