@@ -129,6 +129,8 @@ if exists("&termguicolors") && exists("&winblend")
   set wildoptions=pum
   set pumblend=5
   set background=dark
+  let g:vscode_style = "dark"
+  let g:vscode_italic_comment = 1
   " colorscheme everforest
   " colorscheme OceanicNext
   " colorscheme embark
@@ -137,7 +139,8 @@ if exists("&termguicolors") && exists("&winblend")
   " colorscheme space-vim-dark 
   " colorscheme minedefault
   " colorscheme atlas
-  colorscheme moonfly
+  " colorscheme moonfly
+  colorscheme vscode
 endif
 
 " Extras 
@@ -145,3 +148,4 @@ endif
 set exrc
 
 " vim: set foldmethod=marker foldlevel=0:
+

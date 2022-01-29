@@ -31,9 +31,8 @@ if has("nvim")
   Plug 'karb94/neoscroll.nvim'
   Plug 'kyazdani42/nvim-tree.lua'
   Plug 'liuchengxu/space-vim-dark'
-  Plug 'robertmeta/nofrils'
-  Plug 'huyvohcmc/atlas.vim'
   Plug 'bluz71/vim-moonfly-colors'
+  Plug 'Mofiqul/vscode.nvim'
 endif
 
 Plug 'groenewege/vim-less', { 'for': 'less' }

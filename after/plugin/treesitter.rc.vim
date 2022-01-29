@@ -22,7 +22,8 @@ require'nvim-treesitter.configs'.setup {
     "scss",
     "rust",
     "cpp",
-    "go"
+    "go",
+    "python"
   },
 }
 
