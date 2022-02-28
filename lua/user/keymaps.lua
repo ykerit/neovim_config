@@ -43,3 +43,12 @@ keymap("i", "jk", "<ESC>:w<CR>", opts)
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
+
+-- Telescope
+keymap("n", ";f", "<cmd> lua require('telescope.builtin').find_;iles()<cr>", opts)
+keymap("n", ";r", "<cmd> lua require('telescope.builtin').live_grep()<cr>", opts)
+keymap("n", ";b", "<cmd> lua require('telescope.builtin').file_browser()<cr>", opts)
+keymap("n", ";s", "<cmd> lua require('telescope.builtin').grep_string()<cr>", opts)
+
+-- Nvim tree
+keymap("n", "<C-n>", ":NvimTreeToggle<cr>", opts)
