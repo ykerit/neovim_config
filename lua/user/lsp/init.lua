@@ -1,15 +1,18 @@
-local status_ok, lsp = pcall(require, "lspconfig")
+local status_ok, _ = pcall(require, "lspconfig")
 if not status_ok then
   return
 end
 
-local user = require("user.lsp.lspconfig")
+local template = require("user.lsp.lspconfig")
+template.setup()
 
 local servers = {"rust_analyzer", "tsserver", "pyright", "clangd"}
 
 for _, server in pairs(servers) do
-    lsp[server].setup = user.setup
-    lsp[server].setup()
+    require("lspconfig")[server].setup{
+        on_attach = template.on_attach,
+        capabilities = template.capabilities 
+    }
 end
 
 require("user.lsp.null-ls")
