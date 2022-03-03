@@ -7,8 +7,8 @@ local keymap = vim.api.nvim_set_keymap
 
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.mapleader = ","
+vim.g.maplocalleader = ","
 
 -- Modes
 --   normal_mode = "n",
@@ -45,10 +45,10 @@ keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
 -- Telescope
-keymap("n", ";f", "<cmd> lua require('telescope.builtin').find_;iles()<cr>", opts)
-keymap("n", ";r", "<cmd> lua require('telescope.builtin').live_grep()<cr>", opts)
-keymap("n", ";b", "<cmd> lua require('telescope.builtin').file_browser()<cr>", opts)
-keymap("n", ";s", "<cmd> lua require('telescope.builtin').grep_string()<cr>", opts)
+keymap("n", "<leader>f", "<cmd> lua require('telescope.builtin').find_files()<cr>", opts)
+keymap("n", "<leader>r", "<cmd> lua require('telescope.builtin').live_grep()<cr>", opts)
+keymap("n", "<leader>b", "<cmd> lua require('telescope.builtin').file_browser()<cr>", opts)
+keymap("n", "<leader>s", "<cmd> lua require('telescope.builtin').grep_string()<cr>", opts)
 
 -- Nvim tree
 keymap("n", "<C-n>", ":NvimTreeToggle<cr>", opts)
