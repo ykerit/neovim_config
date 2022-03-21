@@ -57,3 +57,8 @@ keymap("n", "<leader>s", "<cmd> lua require('telescope.builtin').grep_string()<c
 
 -- Nvim tree
 keymap("n", "<C-n>", ":NvimTreeToggle<cr>", opts)
+
+-- Bufferline
+keymap("n", "<leader>c", ":BufferLinePickClose<cr>", opts)
+keymap("n", "[b", ":BufferLineCyclePrev<cr>", opts)
+keymap("n", "]b", ":BufferLineCycleNext<cr>", opts)
