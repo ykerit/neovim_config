@@ -77,6 +77,9 @@ return packer.startup(function(use)
 
     -- colorscheme
     use 'EdenEast/nightfox.nvim'
+    use "savq/melange"
+    use 'haishanh/night-owl.vim'
+    use 'ellisonleao/gruvbox.nvim'
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
