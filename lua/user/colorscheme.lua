@@ -3,7 +3,7 @@ try
   "colorscheme nightfox
   " colorscheme melange
   " colorscheme night-owl
-  colorscheme gruvbox
+  colorscheme rich-default
 catch /^Vim\%((\a\+)\)\=:E185/
   colorscheme default
   set background=dark

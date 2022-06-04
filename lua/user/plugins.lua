@@ -1,4 +1,4 @@
-local fn = vim.fn
+fn = vim.fn
 
 -- Automatically install packer
 local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
@@ -80,6 +80,7 @@ return packer.startup(function(use)
     use "savq/melange"
     use 'haishanh/night-owl.vim'
     use 'ellisonleao/gruvbox.nvim'
+    use 'ykerit/rich-default'
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

@@ -76,7 +76,7 @@ local function lsp_keymaps(bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "gi",     "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-k>",  "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "[d",     "<cmd>lua vim.diagnostic.goto_prev({ border = 'rounded' })<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gl",     "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({ border = 'rounded' })<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>d",     "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "]d",     "<cmd>lua vim.diagnostic.goto_next({ border = 'rounded' })<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
     vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
@@ -105,6 +105,20 @@ for _, lsp in pairs(servers) do
         capabilities = cmp_nvim_lsp.update_capabilities(capabilities),
         flags = {
             debounce_text_changes = 150,
+        },
+        settings = {
+            ["rust-analyzer"] = {
+                assist = {
+                    importGranularity = "module",
+                    importPrefix = "self",
+                },
+                cargo = {
+                    loadOutDirsFromCheck = true
+                },
+                procMacro = {
+                    enable = true
+                },
+            }
         }
     }
 end
