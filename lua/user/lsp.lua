@@ -90,12 +90,16 @@ local function lsp_keymaps(bufnr)
 	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
 end
 
+-- lsp signature help
+require "lsp_signature".setup({})
+
 local on_attach = function(client, bufnr)
 	if client.name == "tsserver" then
 		client.resolved_capabilities.document_formatting = false
 	end
 	lsp_keymaps(bufnr)
 	lsp_highlight_document(client)
+    require "lsp_signature".on_attach()
 end
 
 -- capabilities for nvim lspconfig
@@ -154,3 +158,4 @@ null_ls.setup({
 
 -- fidget show lsp progress
 require("fidget").setup({})
+

@@ -62,7 +62,8 @@ return packer.startup(function(use)
     -- LSP
     use "neovim/nvim-lspconfig" -- enable LSP
     use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
-    use "j-hui/fidget.nvim"
+    use "j-hui/fidget.nvim" -- for lsp server loadding progress
+    use "ray-x/lsp_signature.nvim" -- for func signature completions
 
     -- Telescope
     use "nvim-telescope/telescope.nvim"
