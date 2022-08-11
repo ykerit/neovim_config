@@ -90,6 +90,9 @@ local function lsp_keymaps(bufnr)
 	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
 end
 
+-- lsp server manager mason
+require("mason").setup()
+
 -- lsp signature help
 require "lsp_signature".setup({})
 
@@ -109,8 +112,8 @@ if not status_ok then
 	return
 end
 
--- local servers = {"rust_analyzer", "tsserver", "pyright", "clangd"}
-local servers = { "rust_analyzer", "tsserver", "pyright", "gopls" }
+local servers = {"rust_analyzer", "tsserver", "pyright", "clangd"}
+-- local servers = { "rust_analyzer", "tsserver", "pyright", "gopls" }
 for _, lsp in pairs(servers) do
 	require("lspconfig")[lsp].setup({
 		on_attach = on_attach,

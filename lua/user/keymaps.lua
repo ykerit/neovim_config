@@ -62,3 +62,20 @@ keymap("n", "<C-n>", ":NvimTreeToggle<cr>", opts)
 keymap("n", "<leader>c", ":BufferLinePickClose<cr>", opts)
 keymap("n", "[b", ":BufferLineCyclePrev<cr>", opts)
 keymap("n", "]b", ":BufferLineCycleNext<cr>", opts)
+
+-- LspSaga
+keymap("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })
+keymap("v", "<leader>ca", "<cmd><C-U>Lspsaga range_code_action<CR>", { silent = true })
+keymap("n", "gr", "<cmd>Lspsaga rename<CR>", { silent = true })
+keymap("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
+keymap("n", "<leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<CR>", { silent = true })
+keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true })
+keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true })
+
+-- terminal
+keymap('t', '<esc>', [[<C-\><C-n>]], opts)
+keymap('t', 'jk', [[<C-\><C-n>]], opts)
+keymap('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
+keymap('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
+keymap('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
+keymap('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)

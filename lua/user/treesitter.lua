@@ -3,6 +3,8 @@ if not status_ok then
     return
 end
 
+require'colorizer'.setup()
+
 configs.setup {
     ensure_installed = {"tsx", "toml", "json", "yaml", "html", "scss", "rust", "cpp", "go", "python"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
     sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)

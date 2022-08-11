@@ -11,3 +11,7 @@ require "user.gitsigns"
 require "user.nvim-tree"
 require "user.bufferline"
 require "user.lualine"
+require "user.toggleterm"
+
+-- Exempt from configuring plugins
+require("scope").setup()

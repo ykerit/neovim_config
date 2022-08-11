@@ -36,7 +36,7 @@ packer.init {
 
 -- Install your plugins here
 return packer.startup(function(use)
-    -- My plugins here
+    -- generate plugins here
     use "wbthomason/packer.nvim" -- Have packer manage itself
     use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
     use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
@@ -44,6 +44,7 @@ return packer.startup(function(use)
     use "kyazdani42/nvim-web-devicons"
     use "kyazdani42/nvim-tree.lua"
     use "akinsho/bufferline.nvim"
+    use "tiagovla/scope.nvim"
     use "moll/vim-bbye"
     use "nvim-lualine/lualine.nvim"
     use "akinsho/toggleterm.nvim"
@@ -64,6 +65,9 @@ return packer.startup(function(use)
     use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
     use "j-hui/fidget.nvim" -- for lsp server loadding progress
     use "ray-x/lsp_signature.nvim" -- for func signature completions
+    use 'glepnir/lspsaga.nvim'
+    use 'williamboman/mason.nvim'
+    use 'williamboman/mason-lspconfig.nvim'
 
     -- Telescope
     use "nvim-telescope/telescope.nvim"
@@ -77,10 +81,7 @@ return packer.startup(function(use)
     use "lewis6991/gitsigns.nvim"
 
     -- colorscheme
-    use 'EdenEast/nightfox.nvim'
-    use "savq/melange"
-    use 'haishanh/night-owl.vim'
-    use 'ellisonleao/gruvbox.nvim'
+    use 'norcalli/nvim-colorizer.lua'
     use 'ykerit/rich-default'
 
     -- Automatically set up your configuration after cloning packer.nvim
