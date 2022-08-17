@@ -30,8 +30,10 @@ local options = {
     wrap = false, -- display lines as one long line
     scrolloff = 8, -- is one of my fav
     sidescrolloff = 8,
-    -- guifont = { "MesloLGSDZ NF", ":h12", "MesloLGS Nerd Font Mono", ":h12"}
-    guifont = { "MesloLGS Nerd Font Mono", ":h16"}
+    -- guifont = { "MesloLGSDZ NF", ":h12" }
+    guifont = { "Iosevka", ":h12" }
+    -- guifont = { "Iosevka Nerd Font Mono", ":h15" }
+    -- guifont = { "MesloLGS Nerd Font Mono", ":h16"}
 }
 
 vim.opt.shortmess:append "c"

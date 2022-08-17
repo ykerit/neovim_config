@@ -80,11 +80,8 @@ local function lsp_keymaps(bufnr)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", "<cmd>lua vim.diagnostic.goto_prev({ border = 'rounded' })<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>d", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", "<cmd>lua vim.diagnostic.goto_next({ border = 'rounded' })<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
@@ -94,7 +91,7 @@ end
 require("mason").setup()
 
 -- lsp signature help
-require "lsp_signature".setup({})
+require("lsp_signature").setup({})
 
 local on_attach = function(client, bufnr)
 	if client.name == "tsserver" then
@@ -102,7 +99,7 @@ local on_attach = function(client, bufnr)
 	end
 	lsp_keymaps(bufnr)
 	lsp_highlight_document(client)
-    require "lsp_signature".on_attach()
+	require("lsp_signature").on_attach()
 end
 
 -- capabilities for nvim lspconfig
@@ -112,7 +109,7 @@ if not status_ok then
 	return
 end
 
-local servers = {"rust_analyzer", "tsserver", "pyright", "clangd"}
+local servers = { "rust_analyzer", "tsserver", "pyright", "clangd", "sumneko_lua" }
 -- local servers = { "rust_analyzer", "tsserver", "pyright", "gopls" }
 for _, lsp in pairs(servers) do
 	require("lspconfig")[lsp].setup({
@@ -161,4 +158,3 @@ null_ls.setup({
 
 -- fidget show lsp progress
 require("fidget").setup({})
-

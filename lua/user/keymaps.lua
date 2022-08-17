@@ -59,22 +59,31 @@ keymap("n", "<leader>s", "<cmd> lua require('telescope.builtin').grep_string()<c
 keymap("n", "<C-n>", ":NvimTreeToggle<cr>", opts)
 
 -- Bufferline
-keymap("n", "<leader>c", ":BufferLinePickClose<cr>", opts)
+keymap("n", "<leader>b", ":BufferLinePickClose<cr>", opts)
 keymap("n", "[b", ":BufferLineCyclePrev<cr>", opts)
 keymap("n", "]b", ":BufferLineCycleNext<cr>", opts)
 
 -- LspSaga
 keymap("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })
 keymap("v", "<leader>ca", "<cmd><C-U>Lspsaga range_code_action<CR>", { silent = true })
-keymap("n", "gr", "<cmd>Lspsaga rename<CR>", { silent = true })
-keymap("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
-keymap("n", "<leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<CR>", { silent = true })
+keymap("n", "<leader>gr", "<cmd>Lspsaga rename<CR>", { silent = true })
+keymap("n", "<leader>d", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
 keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true })
 keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true })
+keymap("n", "<leader>gp", "<cmd>Lspsaga preview_definition<CR>", { silent = true })
+keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
+
+local action = require("lspsaga.action")
+vim.keymap.set("n", "<C-f>", function()
+    action.smart_scroll_with_saga(1)
+end, { silent = true })
+vim.keymap.set("n", "<C-b>", function()
+    action.smart_scroll_with_saga(-1)
+end, { silent = true })
+
 
 -- terminal
-keymap('t', '<esc>', [[<C-\><C-n>]], opts)
-keymap('t', 'jk', [[<C-\><C-n>]], opts)
+keymap('t', 'jt', [[<C-\><C-n>]], opts)
 keymap('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
 keymap('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
 keymap('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
