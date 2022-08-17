@@ -1,15 +1,5 @@
-vim.g.catppuccin_flavour = "mocha" 
+vim.g.catppuccin_flavour = "mocha"
 
-require("catppuccin").setup({
-    term_colors = true,
-    styles = {
-        comments = {"italic"},
-        conditionals = {"italic"},
-    },
-    integrations = {
-        lsp_saga = true,
-        gitsigns = true,
-    }
-})
+require("catppuccin").setup()
 
-vim.cmd [[colorscheme catppuccin]]
+vim.cmd([[colorscheme catppuccin]])

@@ -83,7 +83,7 @@ return packer.startup(function(use)
     -- colorscheme
     use 'norcalli/nvim-colorizer.lua'
     use 'ykerit/rich-default'
-    use { "catppuccin/nvim", as = "catppuccin" }
+    use { "ykerit/catppuccin-nvim", as = "catppuccin" }
     use 'pineapplegiant/spaceduck'
 
     -- Automatically set up your configuration after cloning packer.nvim
