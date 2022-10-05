@@ -156,5 +156,6 @@ null_ls.setup({
 	},
 })
 
+
 -- fidget show lsp progress
 require("fidget").setup({})
