@@ -26,34 +26,15 @@ for _, sign in ipairs(signs) do
 	})
 end
 
-local config = {
-	-- disable virtual text
-	virtual_text = false,
-	-- show signs
-	signs = {
-		active = signs,
-	},
-	update_in_insert = true,
-	underline = true,
-	severity_sort = true,
-	float = {
-		focusable = false,
-		style = "minimal",
-		border = "rounded",
-		source = "always",
-		header = "",
-		prefix = "",
-	},
-}
 
-vim.diagnostic.config(config)
-
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-	border = "rounded",
-})
-
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-	border = "rounded",
+vim.diagnostic.config({
+    virtual_text = false,
+    signs = {
+        active = signs,
+    },
+    update_in_insert = true,
+    underline = true,
+    severity_sort = true,
 })
 
 local function lsp_keymaps(bufnr)
@@ -75,15 +56,41 @@ end
 require("mason").setup()
 
 -- lsp signature help
-require("lsp_signature").setup({})
+require("lsp_signature").setup()
 
-local on_attach = function(client, bufnr)
-	lsp_keymaps(bufnr)
-	require("lsp_signature").on_attach()
+local on_attach = function(_, bufnr)
+    local function buf_set_option(...)
+      vim.api.nvim_buf_set_option(bufnr, ...)
+    end
+
+    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+    -- Mappings.
+    local opts = { buffer = bufnr, noremap = true, silent = true }
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
+    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
+    vim.keymap.set('n', '<space>wl', function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, opts)
+    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
+    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
+    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+    vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 end
 
 -- capabilities for nvim lspconfig
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = { "documentation", "detail", "additionalTextEdits" },
+}
 local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_ok then
 	return
@@ -94,10 +101,7 @@ local servers = { "rust_analyzer", "tsserver", "pyright", "clangd", "sumneko_lua
 for _, lsp in pairs(servers) do
 	require("lspconfig")[lsp].setup({
 		on_attach = on_attach,
-		capabilities = cmp_nvim_lsp.update_capabilities(capabilities),
-		flags = {
-			debounce_text_changes = 150,
-		},
+		capabilities = capabilities,
 		settings = {
 			["rust-analyzer"] = {
 				assist = {
@@ -116,15 +120,31 @@ for _, lsp in pairs(servers) do
 end
 
 -- Formatter
-local null_ls_status_ok, null_ls = pcall(require, "null-ls")
-if not null_ls_status_ok then
-	return
+local null_ls = require 'null-ls'
+local formatting = null_ls.builtins.formatting
+local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
+local lsp_formatting = function(bufnr)
+    vim.lsp.buf.format({
+        filter = function(client)
+            return client.name == "null-ls"
+        end,
+        bufnr = bufnr,
+    })
 end
 
-local formatting = null_ls.builtins.formatting
-
 null_ls.setup({
-	debug = false,
+    on_attach = function(client, bufnr)
+        if client.supports_method("textDocument/formatting") then
+            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                group = augroup,
+                buffer = bufnr,
+                callback = function()
+                    lsp_formatting(bufnr)
+                end,
+            })
+        end
+    end,
 	sources = {
 		formatting.prettier.with({
 			extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
@@ -133,6 +153,7 @@ null_ls.setup({
 			extra_args = { "--fast" },
 		}),
 		formatting.stylua,
+        formatting.rustfmt,
 	},
 })
 
