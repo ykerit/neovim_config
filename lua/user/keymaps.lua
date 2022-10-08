@@ -8,7 +8,11 @@ local term_opts = {
 }
 
 local saga = require('lspsaga')
-saga.init_lsp_saga()
+saga.init_lsp_saga({
+    code_action_lightbulb = {
+        enable = false,
+    },
+})
 
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
@@ -29,10 +33,6 @@ keymap("n", "<C-Down>", ":resize +2<CR>", opts)
 keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
--- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
-
 -- Insert --
 -- Press jk fast to enter
 keymap("i", "jk", "<ESC>:w<CR>", opts)
@@ -51,17 +51,17 @@ vim.keymap.set('n', 'fh', builtin.help_tags, {})
 keymap("n", "<leader>fb", "<cmd>Telescope file_browser<CR>", { silent = true })
 
 -- Bufferline
-keymap("n", "<leader>b", ":BufferLinePickClose<cr>", opts)
-keymap("n", "[b", ":BufferLineCyclePrev<cr>", opts)
-keymap("n", "]b", ":BufferLineCycleNext<cr>", opts)
+keymap("n", "<leader>b", "<cmd>BufferLinePickClose<cr>", opts)
+keymap("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", opts)
+keymap("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", opts)
 
 -- LspSaga
 keymap("n", "<leader>ga", "<cmd>Lspsaga code_action<CR>", { silent = true })
 keymap("v", "<leader>ga", "<cmd><C-U>Lspsaga range_code_action<CR>", { silent = true })
 keymap("n", "<leader>gr", "<cmd>Lspsaga rename<CR>", { silent = true })
 keymap("n", "<leader>d", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
-keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true })
-keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true })
+keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true })
+keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true })
 keymap("n", "<leader>gp", "<cmd>Lspsaga preview_definition<CR>", { silent = true })
 keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
 

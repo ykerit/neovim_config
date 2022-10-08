@@ -53,7 +53,7 @@ return packer.startup(function(use)
     -- LSP
     use "neovim/nvim-lspconfig" -- enable LSP
     use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
-    use "j-hui/fidget.nvim" -- for lsp server loadding progress
+    use 'arkav/lualine-lsp-progress'
     use "ray-x/lsp_signature.nvim" -- for func signature completions
     use 'glepnir/lspsaga.nvim'
     use 'williamboman/mason.nvim'
@@ -76,6 +76,7 @@ return packer.startup(function(use)
     use 'ykerit/rich-default'
     use { "ykerit/catppuccin-nvim", as = "catppuccin" }
     use 'pineapplegiant/spaceduck'
+    use 'Mofiqul/vscode.nvim'
 
     if packer_bootstrap then
         require('packer').sync()
