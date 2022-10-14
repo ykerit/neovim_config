@@ -4,6 +4,7 @@ if not status_ok then
 end
 
 require'colorizer'.setup()
+require('indent_blankline').setup()
 
 configs.setup {
     ensure_installed = {"tsx", "toml", "json", "yaml", "html", "scss", "rust", "cpp", "go", "python"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages

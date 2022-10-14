@@ -38,6 +38,7 @@ return packer.startup(function(use)
     use "moll/vim-bbye"
     use "nvim-lualine/lualine.nvim"
     use 'karb94/neoscroll.nvim'
+    use "lukas-reineke/indent-blankline.nvim"
     -- cmp plugins
     use "hrsh7th/nvim-cmp" -- The completion plugin
     use "hrsh7th/cmp-buffer" -- buffer completions
@@ -74,9 +75,8 @@ return packer.startup(function(use)
     -- colorscheme
     use 'norcalli/nvim-colorizer.lua'
     use 'ykerit/rich-default'
-    use { "ykerit/catppuccin-nvim", as = "catppuccin" }
-    use 'pineapplegiant/spaceduck'
     use 'Mofiqul/vscode.nvim'
+    use { 'kartikp10/noctis.nvim', requires = { 'rktjmp/lush.nvim' } }
 
     if packer_bootstrap then
         require('packer').sync()
