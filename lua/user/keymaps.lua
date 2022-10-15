@@ -1,17 +1,17 @@
 local opts = {
-    noremap = true,
-    silent = true
+	noremap = true,
+	silent = true,
 }
 
 local term_opts = {
-    silent = true
+	silent = true,
 }
 
-local saga = require('lspsaga')
+local saga = require("lspsaga")
 saga.init_lsp_saga({
-    code_action_lightbulb = {
-        enable = false,
-    },
+	code_action_lightbulb = {
+		enable = false,
+	},
 })
 
 -- Shorten function name
@@ -43,12 +43,12 @@ keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
 -- Telescope
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', 'ff', builtin.find_files, {})
-vim.keymap.set('n', 'fg', builtin.live_grep, {})
-vim.keymap.set('n', 'fb', builtin.buffers, {})
-vim.keymap.set('n', 'fh', builtin.help_tags, {})
-vim.keymap.set('n', 'fl', builtin.lsp_document_symbols, {})
+local builtin = require("telescope.builtin")
+vim.keymap.set("n", "ff", builtin.find_files, {})
+vim.keymap.set("n", "fg", builtin.live_grep, {})
+vim.keymap.set("n", "fb", builtin.buffers, {})
+vim.keymap.set("n", "fh", builtin.help_tags, {})
+vim.keymap.set("n", "fl", builtin.lsp_document_symbols, {})
 keymap("n", "<leader>fb", "<cmd>Telescope file_browser<CR>", { silent = true })
 
 -- Bufferline
@@ -65,4 +65,3 @@ keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true })
 keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true })
 keymap("n", "<leader>gp", "<cmd>Lspsaga preview_definition<CR>", { silent = true })
 keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
-
