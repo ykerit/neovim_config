@@ -75,6 +75,7 @@ return packer.startup(function(use)
 	use("ykerit/rich-default")
 	use("Mofiqul/vscode.nvim")
 	use({ "kartikp10/noctis.nvim", requires = { "rktjmp/lush.nvim" } })
+	use("Mofiqul/adwaita.nvim")
 
 	if packer_bootstrap then
 		require("packer").sync()
