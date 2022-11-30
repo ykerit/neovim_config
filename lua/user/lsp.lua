@@ -122,9 +122,10 @@ null_ls.setup({
 		end
 	end,
 	sources = {
-		formatting.prettier.with({
-			extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
-		}),
+		-- formatting.prettier.with({
+		-- 	extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
+		-- }),
+		formatting.deno_fmt,
 		formatting.black.with({
 			extra_args = { "--fast" },
 		}),
