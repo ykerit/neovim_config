@@ -1,5 +1,2 @@
--- vim.cmd([[colorscheme noctis]])
--- require('vscode').setup({})
--- vim.g.adwaita_darker = true
--- vim.cmd([[colorscheme adwaita]])
-vim.cmd([[colorscheme mellow]])
+-- require("vscode").setup({})
+vim.cmd([[colorscheme moonfly]])

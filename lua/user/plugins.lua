@@ -72,11 +72,8 @@ return packer.startup(function(use)
 
 	-- colorscheme
 	use("norcalli/nvim-colorizer.lua")
-	use("ykerit/rich-default")
 	use("Mofiqul/vscode.nvim")
-	use({ "kartikp10/noctis.nvim", requires = { "rktjmp/lush.nvim" } })
-	use("Mofiqul/adwaita.nvim")
-	use("kvrohit/mellow.nvim")
+	use("bluz71/vim-moonfly-colors")
 
 	if packer_bootstrap then
 		require("packer").sync()
