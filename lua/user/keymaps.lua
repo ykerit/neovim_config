@@ -17,6 +17,7 @@ saga.init_lsp_saga({
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
 
+
 -- Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
@@ -65,3 +66,6 @@ keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true })
 keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true })
 keymap("n", "<leader>gp", "<cmd>Lspsaga peek_definition<CR>", { silent = true })
 keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
+
+vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
+vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
