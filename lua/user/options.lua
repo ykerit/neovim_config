@@ -24,7 +24,7 @@ local options = {
 	tabstop = 4, -- insert 2 spaces for a tab
 	cursorline = true, -- highlight the current line
 	number = true, -- set numbered lines
-	relativenumber = false, -- set relative numbered lines
+	relativenumber = true, -- set relative numbered lines
 	numberwidth = 4, -- set number column width to 2 {default 4}
 	signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
 	wrap = false, -- display lines as one long line
@@ -34,7 +34,7 @@ local options = {
 	-- guifont = { "Iosevka", ":h12" },
 	-- guifont = { "Iosevka Nerd Font Mono", ":h15" }
 	-- guifont = { "CaskaydiaCove NF Mono", ":h13" },
-	guifont = { "FiraCode NFM", ":h14" },
+	guifont = { "FiraCode NFM", ":h16" },
 }
 
 vim.opt.shortmess:append("c")
@@ -43,7 +43,23 @@ for k, v in pairs(options) do
 	vim.opt[k] = v
 end
 
+local win_options = {
+  -- shell = vim.fn.executable "pwsh" == 1 and "pwsh" or "powershell",
+  -- shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;",
+  -- shellredir = "-RedirectStandardOutput %s -NoNewWindow -Wait",
+  -- shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode",
+  -- shellquote = "",
+  -- shellxquote = "",
+    shell = 'nu',
+    shellcmdflag = '-c',
+    shellquote = "",
+    shellxquote = ""
+}
+
+for option, value in pairs(win_options) do
+  vim.opt[option] = value
+end
+
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])
-vim.cmd([[set formatoptions-=cro]]) -- TODO: this doesn't seem to work
-require("neoscroll").setup()
+vim.cmd([[set formatoptions-=cro]]) 

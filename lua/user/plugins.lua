@@ -53,6 +53,7 @@ return packer.startup(function(use)
 		},
 	})
 	use("akinsho/toggleterm.nvim")
+    use("willthbill/opener.nvim")
 	-- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin
 	use("hrsh7th/cmp-buffer") -- buffer completions
@@ -89,6 +90,10 @@ return packer.startup(function(use)
 	use("Mofiqul/vscode.nvim")
 	use("bluz71/vim-moonfly-colors")
 	use("ellisonleao/gruvbox.nvim")
+    use({"hwadii/gruber_darker.nvim", requires= {
+        "rktjmp/lush.nvim"
+    }})
+    use('folke/tokyonight.nvim')
 
 	if packer_bootstrap then
 		require("packer").sync()
